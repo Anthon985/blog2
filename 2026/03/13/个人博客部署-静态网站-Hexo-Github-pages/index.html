@@ -1,0 +1,654 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>个人博客部署-静态网站(Hexo+Github pages) | Blog</title><meta name="keywords" content="前端,静态网站,Hexo,Github pages"><meta name="author" content="Anthon Lei"><meta name="copyright" content="Anthon Lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="个人博客部署-静态网站(Hexo+Github pages)"><meta name="application-name" content="个人博客部署-静态网站(Hexo+Github pages)"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="个人博客部署-静态网站(Hexo+Github pages)"><meta property="og:url" content="https://anthon985.github.io/blog/2026/03/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99-Hexo-Github-pages/index.html"><meta property="og:site_name" content="Blog"><meta property="og:description" content="从零搭建个人博客｜过程详解+避坑心得（附代码+截图指引）最近花了3天时间，从零搭建了属于自己的个人博客，从环境配置到主题美化，踩了不少坑，也积累了很多实用经验。今天就把完整的搭建过程整理出来，写成一篇保姆级教学文，不管你是编程新手还是有少量基础，跟着步骤来，都能快速拥有自己的专属博客，记录生活、分享"><meta property="og:locale" content="en"><meta property="og:image" content="https://s41.ax1x.com/2026/03/14/peE8XMd.png"><meta property="article:author" content="Anthon Lei"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://s41.ax1x.com/2026/03/14/peE8XMd.png"><meta name="description" content="从零搭建个人博客｜过程详解+避坑心得（附代码+截图指引）最近花了3天时间，从零搭建了属于自己的个人博客，从环境配置到主题美化，踩了不少坑，也积累了很多实用经验。今天就把完整的搭建过程整理出来，写成一篇保姆级教学文，不管你是编程新手还是有少量基础，跟着步骤来，都能快速拥有自己的专属博客，记录生活、分享"><link rel="shortcut icon" href="/blog/favicon.ico"><link rel="canonical" href="https://anthon985.github.io/blog/2026/03/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99-Hexo-Github-pages/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="manifest" href="/blog/manifest.json"/><meta name="msapplication-TileColor" content="var(--anzhiyu-main)"/><link rel="mask-icon" href="/blog/img/siteicon/apple-icon-180.png" color="#5bbad5"/><link rel="apple-touch-icon" sizes="180x180" href="/blog/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/blog/img/siteicon/apple-icon-180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/blog/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/blog/img/siteicon/16.png"/><link rel="bookmark" href="/blog/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2796-1290.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2556-1179.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"Qwen","mode":"tianli","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":null,"Referer":"http://leisheng.me/blog/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: '',
+  commentBarrageConfig:{"enable":true,"maxBarrage":1,"barrageTime":4000,"accessToken":"","mailMd5":""},
+  music_page_default: "nav_music",
+  root: '/blog/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["你可以的","你是最棒的","摸鱼ing","天天开心"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":20,"position":"top","messagePrev":"本文发布已超过","messageNext":"天，信息可能不再有效"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: Anthon Lei","link":"Link: ","source":"Source: Blog","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.2.0/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'Blog',
+  title: '个人博客部署-静态网站(Hexo+Github pages)',
+  postAI: '',
+  pageFillDescription: '从零搭建个人博客｜过程详解+避坑心得（附代码+截图指引）, 一、搭建前准备：明确目标+必备工具, 必备环境（提前安装缺一不可）, 二、核心步骤：从零搭建Hexo博客（全程实操）, 步骤1：安装Hexo框架（终端操作）, 步骤2：初始化Hexo博客项目, 步骤3：配置博客基础信息（关键一步）, 步骤4：更换博客主题（提升颜值）, 步骤5：部署博客到GitHub Pages（让别人能访问）, 三、常用配置补充（提升博客实用性）, 1. 新建博客文章（核心操作）, 2. Next主题简单美化, 3. 配置图片显示（避免图片无法加载）, 四、搭建心得+避坑总结, 1. 心得感悟, 2. 常见坑及避坑技巧, 五、总结从零搭建个人博客过程详解避坑心得附代码截图指引最近花了天时间从零搭建了属于自己的个人博客从环境配置到主题美化踩了不少坑也积累了很多实用经验今天就把完整的搭建过程整理出来写成一篇保姆级教学文不管你是编程新手还是有少量基础跟着步骤来都能快速拥有自己的专属博客记录生活分享心得本文全程实操包含详细步骤配置代码截图指引标注了需插入图片的位置还有我踩过的坑和避坑技巧建议收藏慢慢看搭建过程中遇到问题可以回头对照查找一搭建前准备明确目标必备工具在开始搭建前先明确两个核心点避免走弯路博客用途我的需求是记录技术心得日常感悟所以选择轻量易维护的静态博客框架无需数据库部署简单核心工具最终选择组合理由是免费易上手生态完善主题丰富适合新手必备环境提前安装缺一不可所有工具均为免费安装步骤简单跟着官方指引来即可这里只列出必备工具和验证方法运行依赖下载地址官方下载建议下载版本稳定不踩坑验证是否安装成功打开终端终端输入以下代码能显示版本号即成功此处插入安装成功后终端显示版本号的截图标注清楚和的版本号用于部署博客到下载地址官方下载安装时默认下一步即可验证是否安装成功终端输入以下代码显示版本号即成功此处插入安装成功后终端显示版本号的截图账号用于存放博客代码和部署注册地址官网注册时注意用户名后续博客地址会包含用户名建议简洁好记注册成功后创建一个新仓库仓库名称必须为用户名例如我的用户名是仓库名就是否则无法正常部署此处插入新建仓库的截图标注清楚仓库名称的格式要求二核心步骤从零搭建博客全程实操这部分是重点每一步都有详细操作和代码建议跟着步骤一步步来不要跳步避免出错步骤安装框架终端操作是静态博客框架通过命令行即可完成安装和初始化操作非常简单打开终端输入以下命令全局安装安装速度可能较慢耐心等待出现即安装成功验证是否安装成功终端输入以下代码显示版本号即成功此处插入安装成功后终端显示版本号的截图步骤初始化博客项目安装完后需要创建一个博客项目后续所有的配置文章都在这个项目中进行终端中进入你想存放博客项目的文件夹例如我放在桌面命令如下进入桌面通用若路径不同可自行修改初始化博客项目输入以下命令是项目名称可自定义例如初始化完成后进入博客项目目录安装博客依赖包必须执行否则无法启动本地服务启动本地博客服务预览初始效果简写启动成功后终端会显示打开浏览器输入就能看到默认的博客界面了此处插入本地博客默认界面的截图标注清楚访问地址避坑提醒如果启动服务时提示端口被占用可以修改端口号命令为可替换为其他未被占用的端口步骤配置博客基础信息关键一步默认的博客信息标题作者描述等需要修改让博客变成自己的风格这一步需要修改项目中的配置文件打开博客项目文件夹找到文件这是的核心配置文件所有基础配置都在这里用记事本等编辑器打开该文件找到以下配置项修改为自己的信息注意配置项冒号后面必须加一个空格否则会报错这是最容易踩的坑我的个人博客博客标题例如的技术笔记记录成长分享美好博客副标题专注于技术分享日常感悟愿我们一起成长博客描述用于搜索引擎收录你的名字作者名称语言中文无需修改时区上海无需修改修改完成后保存文件重启本地服务先按停止服务再输入刷新浏览器就能看到修改后的标题和作者信息了此处插入修改基础信息后本地博客界面的截图标注清楚修改后的标题作者步骤更换博客主题提升颜值默认主题比较简洁我们可以更换更美观功能更全的主题这里推荐新手使用主题最流行文档完善易配置步骤如下终端中确保当前在博客项目目录下输入以下命令下载主题下载完成后打开配置文件找到配置项将默认的修改为更换为主题保存文件重启本地服务刷新浏览器就能看到主题的界面了默认是简洁的白色风格后续可以再美化此处插入主题默认界面的截图标注清楚主题样式补充主题有多种风格等可以在主题配置文件中修改后续会提到步骤部署博客到让别人能访问本地博客只能自己看到要让别人通过网络访问需要部署到这一步需要配置相关信息打开博客项目的文件找到配置项修改为以下内容替换成你自己的用户名你的用户名你的用户名替换成你的仓库地址分支默认若你的仓库分支是就改为安装部署插件必须安装否则无法部署终端输入生成博客静态文件每次部署前都要执行清理缓存可选但建议执行避免旧文件干扰生成静态文件简写部署到终端输入简写部署时会提示输入的用户名和密码或若开启了二次验证需用登录输入正确后等待部署完成终端显示即成功部署完成后等待分钟需要时间同步打开浏览器输入你的用户名就能看到自己的博客了别人也能通过这个地址访问此处插入部署成功后浏览器访问博客的截图标注清楚博客地址避坑提醒仓库名称必须是用户名否则部署后无法访问部署时若提示权限不足检查用户名和密码是否正确或重新生成同步时间可能需要分钟耐心等待若仍无法访问检查配置文件中的信息是否正确三常用配置补充提升博客实用性基础博客搭建完成后我们可以做一些补充配置让博客更实用更美观这里列举几个新手必备的配置新建博客文章核心操作后续发布文章只需通过命令行新建操作如下文章标题例如从零搭建博客执行后会在目录下生成一篇格式的文章打开文章在之间填写文章配置标签分类等下方写正文即可示例从零搭建博客文章标题发布时间自动生成可修改博客搭建新手教程文章标签多个标签用逗号分隔技术教程文章分类正文标题这里写文章正文支持语法比如加粗斜体链接图片等二级标题三级标题写完文章后执行生成部署就能在博客上看到新发布的文章了主题简单美化打开主题的配置文件可以修改以下配置快速美化博客主题风格可选我选择的风格简洁美观开启暗黑模式自动切换顶部导航栏添加菜单比如关于我归档开启文章目录显示目录序号修改完成后生成并部署刷新博客就能看到效果配置图片显示避免图片无法加载博客中插入图片直接用本地路径会导致部署后无法加载推荐两种方法方法将图片放在目录下插入图片时使用以下语法图片描述图片名称方法使用图床如图床将图片上传到图床复制图片链接直接插入文章即可适合图片较多的情况四搭建心得避坑总结整个搭建过程从环境配置到部署成功我踩了不少坑也总结了一些心得分享给大家帮大家少走弯路心得感悟一开始我也是零基础以为搭建博客很难实际操作后发现只要跟着步骤来每一步都仔细看其实很简单搭建博客的过程不仅学会了和的基本使用还锻炼了自己的动手能力当看到自己的博客能被别人访问时那种成就感真的很棒另外个人博客不仅是记录和分享的平台也是自己成长的见证后续可以慢慢优化添加更多功能比如评论访客统计等让博客变得更有个性常见坑及避坑技巧坑配置文件冒号后没加空格导致博客启动失败避坑修改配置时所有冒号后面都必须加一个空格比如我的博客不能写成我的博客坑部署后无法访问提示避坑检查仓库名称是否为用户名配置中的仓库地址是否正确分支是否为或坑图片部署后无法加载避坑不要使用本地绝对路径用相对路径目录或图床链接坑启动服务时端口被占用避坑用端口号更换端口比如五总结以上就是从零搭建个人博客的完整过程从准备工作环境配置到搭建部署美化每一步都有详细的操作和代码还有我踩过的坑和心得其实搭建博客真的没有那么难新手也能快速上手关键是要有耐心一步一步来遇到问题不要慌多查资料多尝试总能解决如果你也想拥有自己的个人博客不妨跟着这篇教程动手试试相信你也能顺利搭建出属于自己的博客记录生活分享成长',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-03-14 14:13:58',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><style>
+    /* 强制设置侧边栏作者卡背景为主题主色渐变，覆盖默认样式 */
+    .aside .card_author, .card-author, .author-card, .aside .card_author .card, .author-card .card {
+      background: linear-gradient(135deg, var(--anzhiyu-main) 0%, #6c7ef8 100%) !important;
+      color: #ffffff !important;
+    }
+    .aside .card_author .author-name, .author-card .author-name, .aside .card_author .author-meta {
+      color: rgba(255,255,255,0.95) !important;
+    }
+    .aside .card_author .author-links a, .author-card .author-links a {
+      background: rgba(255,255,255,0.12) !important;
+      color: #fff !important;
+    }
+
+    /* 移除首页上部右侧卡片（todayCard）的黑色模糊阴影和覆盖层，同时保留文字 */
+    .todayCard::after, .todayCard .todayCard-cover::after {
+        background: none !important;
+        backdrop-filter: none !important;
+    }
+    </style><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">我的日常</div><div class="back-menu-list"><a class="back-menu-item" href="/blog/" title="日记"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="日记"/><span class="back-menu-item-text">日记</span></a></div></div></div></div><a id="site-name" href="/blog/" accesskey="h"><div class="title">Blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="Random Post" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="Console" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">Interaction</div><span class="author-content-item-title"> Newest Comments</span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">Interests</div><span class="author-content-item-title">Find your area of interest</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/blog/tags/Github-pages/" style="font-size: 1.05rem;">Github pages<sup>1</sup></a><a href="/blog/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>1</sup></a><a href="/blog/tags/test/" style="font-size: 1.05rem;">test<sup>1</sup></a><a href="/blog/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.05rem;">前端<sup>1</sup></a><a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 1.05rem;">测试<sup>2</sup></a><a href="/blog/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/" style="font-size: 1.05rem;">静态网站<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>Articles</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/blog/archives/2026/03/"><span class="card-archive-list-date">March 2026</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="Toggle Display Mode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="Toggle Sidebar"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="Toggle Comments Barrage"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="Toggle Music"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="Toggle"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" itemprop="url">搭建网站</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/blog/tags/%E5%89%8D%E7%AB%AF/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>前端</span></a><a class="article-meta__tags" href="/blog/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>静态网站</span></a><a class="article-meta__tags" href="/blog/tags/Hexo/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Hexo</span></a><a class="article-meta__tags" href="/blog/tags/Github-pages/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Github pages</span></a></span></div></div><h1 class="post-title" itemprop="name headline">个人博客部署-静态网站(Hexo+Github pages)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2026-03-13T14:00:12.000Z" title="Created 2026-03-13 22:00:12">2026-03-13</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-03-14T06:13:58.894Z" title="Updated 2026-03-14 14:13:58">2026-03-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span id="" data-flag-title="个人博客部署-静态网站(Hexo+Github pages)"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">Post View:</span><span class="waline-pageview-count" data-path="/blog/2026/03/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99-Hexo-Github-pages/" title="访问量"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为湖南"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>湖南</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://s41.ax1x.com/2026/03/14/peE8XMd.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://anthon985.github.io/blog/2026/03/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99-Hexo-Github-pages/"><header><a class="post-meta-categories" href="/blog/categories/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" itemprop="url">搭建网站</a><a href="/blog/tags/%E5%89%8D%E7%AB%AF/" tabindex="-1" itemprop="url">前端</a><a href="/blog/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/" tabindex="-1" itemprop="url">静态网站</a><a href="/blog/tags/Hexo/" tabindex="-1" itemprop="url">Hexo</a><a href="/blog/tags/Github-pages/" tabindex="-1" itemprop="url">Github pages</a><h1 id="CrawlerTitle" itemprop="name headline">个人博客部署-静态网站(Hexo+Github pages)</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Anthon Lei</span><time itemprop="dateCreated datePublished" datetime="2026-03-13T14:00:12.000Z" title="Created 2026-03-13 22:00:12">2026-03-13</time><time itemprop="dateCreated datePublished" datetime="2026-03-14T06:13:58.894Z" title="Updated 2026-03-14 14:13:58">2026-03-14</time></header><h1 id="从零搭建个人博客｜过程详解-避坑心得（附代码-截图指引）"><a href="#从零搭建个人博客｜过程详解-避坑心得（附代码-截图指引）" class="headerlink" title="从零搭建个人博客｜过程详解+避坑心得（附代码+截图指引）"></a>从零搭建个人博客｜过程详解+避坑心得（附代码+截图指引）</h1><p>最近花了3天时间，从零搭建了属于自己的个人博客，从环境配置到主题美化，踩了不少坑，也积累了很多实用经验。今天就把完整的搭建过程整理出来，写成一篇保姆级教学文，不管你是编程新手还是有少量基础，跟着步骤来，都能快速拥有自己的专属博客，记录生活、分享心得～</p>
+<p>本文全程实操，包含详细步骤、配置代码、截图指引（标注了需插入图片的位置），还有我踩过的坑和避坑技巧，建议收藏慢慢看，搭建过程中遇到问题可以回头对照查找。</p>
+<h2 id="一、搭建前准备：明确目标-必备工具"><a href="#一、搭建前准备：明确目标-必备工具" class="headerlink" title="一、搭建前准备：明确目标+必备工具"></a>一、搭建前准备：明确目标+必备工具</h2><p>在开始搭建前，先明确两个核心点，避免走弯路：</p>
+<ul>
+<li>博客用途：我的需求是记录技术心得、日常感悟，所以选择轻量、易维护的静态博客框架（无需数据库，部署简单）；</li>
+<li>核心工具：最终选择 <strong>Hexo + GitHub Pages</strong> 组合，理由是：免费、易上手、生态完善，主题丰富，适合新手。</li>
+</ul>
+<h3 id="必备环境（提前安装，缺一不可）"><a href="#必备环境（提前安装，缺一不可）" class="headerlink" title="必备环境（提前安装，缺一不可）"></a>必备环境（提前安装，缺一不可）</h3><p>所有工具均为免费，安装步骤简单，跟着官方指引来即可，这里只列出必备工具和验证方法：</p>
+<ol>
+<li><strong>Node.js</strong>（Hexo运行依赖）        <ol>
+<li>下载地址：<a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/">Node.js 官方下载</a>（建议下载LTS版本，稳定不踩坑）；</li>
+<li>验证是否安装成功：打开终端（Windows cmd&#x2F; Powershell，Mac 终端），输入以下代码，能显示版本号即成功：<code>node -v ``npm -v</code></li>
+<li>[此处插入：Node.js安装成功后，终端显示版本号的截图，标注清楚node和npm的版本号]</li>
+</ol>
+</li>
+<li><strong>Git</strong>（用于部署博客到GitHub Pages）        <ol>
+<li>下载地址：<a target="_blank" rel="noopener" href="https://git-scm.com/">Git 官方下载</a>，安装时默认下一步即可；</li>
+<li>验证是否安装成功：终端输入以下代码，显示版本号即成功：            <code>git --version</code></li>
+<li>[此处插入：Git安装成功后，终端显示版本号的截图]</li>
+</ol>
+</li>
+<li><strong>GitHub账号</strong>（用于存放博客代码和部署）<ol>
+<li>注册地址：<a target="_blank" rel="noopener" href="https://github.com/">GitHub 官网</a>，注册时注意用户名（后续博客地址会包含用户名，建议简洁好记）；</li>
+<li>注册成功后，创建一个新仓库，仓库名称必须为：<code>用户名.github.io</code>（例如我的用户名是xxx，仓库名就是xxx.github.io），否则无法正常部署。</li>
+<li>[此处插入：GitHub新建仓库的截图，标注清楚仓库名称的格式要求]</li>
+</ol>
+</li>
+</ol>
+<h2 id="二、核心步骤：从零搭建Hexo博客（全程实操）"><a href="#二、核心步骤：从零搭建Hexo博客（全程实操）" class="headerlink" title="二、核心步骤：从零搭建Hexo博客（全程实操）"></a>二、核心步骤：从零搭建Hexo博客（全程实操）</h2><p>这部分是重点，每一步都有详细操作和代码，建议跟着步骤一步步来，不要跳步，避免出错。</p>
+<h3 id="步骤1：安装Hexo框架（终端操作）"><a href="#步骤1：安装Hexo框架（终端操作）" class="headerlink" title="步骤1：安装Hexo框架（终端操作）"></a>步骤1：安装Hexo框架（终端操作）</h3><p>Hexo是静态博客框架，通过命令行即可完成安装和初始化，操作非常简单：</p>
+<ol>
+<li>打开终端，输入以下命令，全局安装Hexo（安装速度可能较慢，耐心等待，出现success即安装成功）：        <code>npm install -g hexo-cli</code></li>
+<li>验证Hexo是否安装成功：终端输入以下代码，显示版本号即成功：        <code>hexo -v</code></li>
+<li>[此处插入：Hexo安装成功后，终端显示版本号的截图]</li>
+</ol>
+<h3 id="步骤2：初始化Hexo博客项目"><a href="#步骤2：初始化Hexo博客项目" class="headerlink" title="步骤2：初始化Hexo博客项目"></a>步骤2：初始化Hexo博客项目</h3><p>安装完Hexo后，需要创建一个博客项目，后续所有的配置、文章都在这个项目中进行：</p>
+<ol>
+<li>终端中，进入你想存放博客项目的文件夹（例如我放在桌面，命令如下）：        <code>cd Desktop  # 进入桌面（Windows/Mac通用，若路径不同可自行修改）</code></li>
+<li>初始化博客项目，输入以下命令（blog是项目名称，可自定义，例如myblog）：        <code>hexo init blog</code></li>
+<li>初始化完成后，进入博客项目目录：        <code>cd blog</code></li>
+<li>安装博客依赖包（必须执行，否则无法启动本地服务）：        <code>npm install</code></li>
+<li>启动本地博客服务，预览初始效果：<code>hexo server  # 简写：hexo s</code></li>
+<li>启动成功后，终端会显示“Hexo is running at <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> . Press Ctrl+C to stop.”，打开浏览器，输入 <code>http://localhost:4000</code>，就能看到默认的Hexo博客界面了。</li>
+<li>[此处插入：本地博客默认界面的截图，标注清楚访问地址<a href="http://localhost:4000]">http://localhost:4000]</a></li>
+</ol>
+<p>⚠️ 避坑提醒：如果启动服务时提示“4000端口被占用”，可以修改端口号，命令为：<code>hexo s -p 5000</code>（5000可替换为其他未被占用的端口）。</p>
+<h3 id="步骤3：配置博客基础信息（关键一步）"><a href="#步骤3：配置博客基础信息（关键一步）" class="headerlink" title="步骤3：配置博客基础信息（关键一步）"></a>步骤3：配置博客基础信息（关键一步）</h3><p>默认的博客信息（标题、作者、描述等）需要修改，让博客变成自己的风格，这一步需要修改项目中的配置文件。</p>
+<ol>
+<li>打开博客项目文件夹（blog），找到 <code>_config.yml</code> 文件（这是Hexo的核心配置文件，所有基础配置都在这里）；</li>
+<li>用记事本、VS Code等编辑器打开该文件，找到以下配置项，修改为自己的信息（注意：配置项冒号后面必须加一个空格，否则会报错，这是最容易踩的坑！）：       <code># Site ``title: 我的个人博客  # 博客标题（例如：XXX的技术笔记） ``subtitle: 记录成长，分享美好  # 博客副标题 ``description: 专注于技术分享、日常感悟，愿我们一起成长～  # 博客描述（用于搜索引擎收录） ``author: 你的名字  # 作者名称 ``language: zh-CN  # 语言（中文，无需修改） ``timezone: Asia/Shanghai  # 时区（上海，无需修改）</code></li>
+<li>修改完成后，保存文件，重启本地服务（先按Ctrl+C停止服务，再输入<code>hexo s</code>），刷新浏览器，就能看到修改后的标题和作者信息了。</li>
+<li>[此处插入：修改基础信息后，本地博客界面的截图，标注清楚修改后的标题、作者]</li>
+</ol>
+<h3 id="步骤4：更换博客主题（提升颜值）"><a href="#步骤4：更换博客主题（提升颜值）" class="headerlink" title="步骤4：更换博客主题（提升颜值）"></a>步骤4：更换博客主题（提升颜值）</h3><p>Hexo默认主题比较简洁，我们可以更换更美观、功能更全的主题，这里推荐新手使用 <strong>Next主题</strong>（最流行、文档完善、易配置），步骤如下：</p>
+<ol>
+<li>终端中，确保当前在博客项目目录（blog）下，输入以下命令，下载Next主题：        <code>git clone https://github.com/next-theme/hexo-theme-next themes/next</code></li>
+<li>下载完成后，打开 <code>_config.yml</code> 配置文件，找到 <code>theme</code> 配置项，将默认的 <code>theme: landscape</code> 修改为 <code>theme: next</code>：        <code># Extensions ``## Plugins: https://hexo.io/plugins/ ``## Themes: https://hexo.io/themes/ ``theme: next  # 更换为Next主题</code></li>
+<li>保存文件，重启本地服务（hexo s），刷新浏览器，就能看到Next主题的界面了（默认是简洁的白色风格，后续可以再美化）。</li>
+<li>[此处插入：Next主题默认界面的截图，标注清楚主题样式]</li>
+</ol>
+<p>💡 补充：Next主题有多种风格（Muse、Mist、Pisces等），可以在主题配置文件中修改，后续会提到。</p>
+<h3 id="步骤5：部署博客到GitHub-Pages（让别人能访问）"><a href="#步骤5：部署博客到GitHub-Pages（让别人能访问）" class="headerlink" title="步骤5：部署博客到GitHub Pages（让别人能访问）"></a>步骤5：部署博客到GitHub Pages（让别人能访问）</h3><p>本地博客只能自己看到，要让别人通过网络访问，需要部署到GitHub Pages，这一步需要配置GitHub相关信息：</p>
+<ol>
+<li>打开博客项目的 <code>_config.yml</code> 文件，找到 <code>deploy</code> 配置项，修改为以下内容（替换成你自己的GitHub用户名）：        <code># Deployment ``## Docs: https://hexo.io/docs/one-command-deployment ``deploy: ``  type: git ``  repo: https://github.com/你的用户名/你的用户名.github.io.git  # 替换成你的仓库地址 ``  branch: main  # 分支（默认main，若你的仓库分支是master，就改为master）</code></li>
+<li>安装部署插件（必须安装，否则无法部署），终端输入：<code>npm install hexo-deployer-git --save</code></li>
+<li>生成博客静态文件（每次部署前都要执行）：        <code>hexo clean  # 清理缓存（可选，但建议执行，避免旧文件干扰） ``hexo generate  # 生成静态文件，简写：hexo g</code></li>
+<li>部署到GitHub Pages，终端输入：        <code>hexo deploy  # 简写：hexo d</code></li>
+<li>部署时，会提示输入GitHub的用户名和密码（或token，若开启了二次验证，需用token登录），输入正确后，等待部署完成（终端显示“Deploy done”即成功）。</li>
+<li>部署完成后，等待5-10分钟（GitHub需要时间同步），打开浏览器，输入 <code>https://你的用户名.github.io</code>，就能看到自己的博客了，别人也能通过这个地址访问！</li>
+<li>[此处插入：GitHub Pages部署成功后，浏览器访问博客的截图，标注清楚博客地址]</li>
+</ol>
+<p>⚠️ 避坑提醒：1. 仓库名称必须是“用户名.github.io”，否则部署后无法访问；2. 部署时若提示“权限不足”，检查GitHub用户名和密码是否正确，或重新生成token；3. 同步时间可能需要5-10分钟，耐心等待，若仍无法访问，检查配置文件中的deploy信息是否正确。</p>
+<h2 id="三、常用配置补充（提升博客实用性）"><a href="#三、常用配置补充（提升博客实用性）" class="headerlink" title="三、常用配置补充（提升博客实用性）"></a>三、常用配置补充（提升博客实用性）</h2><p>基础博客搭建完成后，我们可以做一些补充配置，让博客更实用、更美观，这里列举几个新手必备的配置：</p>
+<h3 id="1-新建博客文章（核心操作）"><a href="#1-新建博客文章（核心操作）" class="headerlink" title="1. 新建博客文章（核心操作）"></a>1. 新建博客文章（核心操作）</h3><p>后续发布文章，只需通过命令行新建，操作如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">&quot;文章标题&quot;</span>  <span class="comment"># 例如：hexo new &quot;从零搭建Hexo博客&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行后，会在 <code>source/_posts</code> 目录下生成一篇Markdown格式的文章，打开文章，在 <code>---</code> 之间填写文章配置（标签、分类等），下方写正文即可，示例：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 从零搭建Hexo博客  # 文章标题</span><br><span class="line">date: 2026-03-13 15:30:00  # 发布时间（自动生成，可修改）</span><br><span class="line">tags: [Hexo, 博客搭建, 新手教程]  # 文章标签（多个标签用逗号分隔）</span><br><span class="line"><span class="section">categories: 技术教程  # 文章分类</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 正文标题</span></span><br><span class="line">这里写文章正文，支持Markdown语法，比如加粗、斜体、链接、图片等。</span><br><span class="line"></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="section">### 三级标题</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>写完文章后，执行 <code>hexo g &amp;&amp; hexo d</code>（生成+部署），就能在博客上看到新发布的文章了。</p>
+<h3 id="2-Next主题简单美化"><a href="#2-Next主题简单美化" class="headerlink" title="2. Next主题简单美化"></a>2. Next主题简单美化</h3><p>打开Next主题的配置文件（<code>themes/next/_config.yml</code>），可以修改以下配置，快速美化博客：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 主题风格（可选：muse/mist/pisces/gemini）</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">gemini</span>  <span class="comment"># 我选择的gemini风格，简洁美观</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启暗黑模式（自动切换）</span></span><br><span class="line"><span class="attr">darkmode:</span> <span class="string">auto</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 顶部导航栏添加菜单（比如“关于我”“归档”）</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">home</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">archive</span></span><br><span class="line">  <span class="attr">about:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">tags</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启文章目录</span></span><br><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">true</span>  <span class="comment"># 显示目录序号</span></span><br></pre></td></tr></table></figure>
+
+<p>修改完成后，生成并部署（hexo g &amp;&amp; hexo d），刷新博客就能看到效果。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src= "https://s41.ax1x.com/2026/03/14/peE1CiF.png" style="zoom: 33%;" />
+
+<h3 id="3-配置图片显示（避免图片无法加载）"><a href="#3-配置图片显示（避免图片无法加载）" class="headerlink" title="3. 配置图片显示（避免图片无法加载）"></a>3. 配置图片显示（避免图片无法加载）</h3><p>博客中插入图片，直接用本地路径会导致部署后无法加载，推荐两种方法：</p>
+<ol>
+<li>方法1：将图片放在<code>source/images</code> 目录下，插入图片时使用以下语法：<code>![图片描述](/images/图片名称.jpg)</code></li>
+<li>方法2：使用图床（如PicGo+GitHub图床），将图片上传到图床，复制图片链接，直接插入文章即可（适合图片较多的情况）。</li>
+</ol>
+<h2 id="四、搭建心得-避坑总结"><a href="#四、搭建心得-避坑总结" class="headerlink" title="四、搭建心得+避坑总结"></a>四、搭建心得+避坑总结</h2><p>整个搭建过程，从环境配置到部署成功，我踩了不少坑，也总结了一些心得，分享给大家，帮大家少走弯路：</p>
+<h3 id="1-心得感悟"><a href="#1-心得感悟" class="headerlink" title="1. 心得感悟"></a>1. 心得感悟</h3><p>一开始我也是零基础，以为搭建博客很难，实际操作后发现，只要跟着步骤来，每一步都仔细看，其实很简单。搭建博客的过程，不仅学会了Hexo和GitHub的基本使用，还锻炼了自己的动手能力，当看到自己的博客能被别人访问时，那种成就感真的很棒～</p>
+<p>另外，个人博客不仅是记录和分享的平台，也是自己成长的见证，后续可以慢慢优化，添加更多功能（比如评论、访客统计等），让博客变得更有个性。</p>
+<h3 id="2-常见坑及避坑技巧"><a href="#2-常见坑及避坑技巧" class="headerlink" title="2. 常见坑及避坑技巧"></a>2. 常见坑及避坑技巧</h3><ul>
+<li>坑1：配置文件 <code>_config.yml</code> 冒号后没加空格，导致博客启动失败。 避坑：修改配置时，所有冒号后面都必须加一个空格（比如 <code>title: 我的博客</code>，不能写成 <code>title:我的博客</code>）。</li>
+<li>坑2：部署后无法访问，提示404。 避坑：检查仓库名称是否为“用户名.github.io”，deploy配置中的仓库地址是否正确，分支是否为main（或master）。</li>
+<li>坑3：图片部署后无法加载。 避坑：不要使用本地绝对路径，用相对路径（source&#x2F;images目录）或图床链接。</li>
+<li>坑4：启动服务时端口被占用。 避坑：用 <code>hexo s -p 端口号</code> 更换端口，比如 <code>hexo s -p 5000</code>。</li>
+</ul>
+<h2 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h2><p>以上就是从零搭建个人博客的完整过程，从准备工作、环境配置，到搭建、部署、美化，每一步都有详细的操作和代码，还有我踩过的坑和心得。</p>
+<p>其实搭建博客真的没有那么难，新手也能快速上手，关键是要有耐心，一步一步来，遇到问题不要慌，多查资料、多尝试，总能解决。</p>
+<p>如果你也想拥有自己的个人博客，不妨跟着这篇教程动手试试，相信你也能顺利搭建出属于自己的博客，记录生活、分享成长～</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/blog/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/blog/img/fish.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/blog/img/fish.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Anthon Lei</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://anthon985.github.io/blog/2026/03/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99-Hexo-Github-pages/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://anthon985.github.io/blog/2026/03/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99-Hexo-Github-pages/')">个人博客部署-静态网站(Hexo+Github pages)</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://anthon985.github.io/blog/2026/03/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99-Hexo-Github-pages/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=个人博客部署-静态网站(Hexo+Github pages)&amp;url=https://anthon985.github.io/blog/2026/03/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99-Hexo-Github-pages/&amp;pic=https://s41.ax1x.com/2026/03/14/peE8XMd.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/blog/tags/%E5%89%8D%E7%AB%AF/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>前端<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/blog/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>静态网站<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/blog/tags/Hexo/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Hexo<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/blog/tags/Github-pages/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Github pages<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://s41.ax1x.com/2026/03/14/peE8XMd.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/blog/2026/03/12/hello-world/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s41.ax1x.com/2026/03/14/peEGpIf.jpg" onerror="onerror=null;src='/blog/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Test-文章标题（必填）</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> Comment</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/blog/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/blog/img/fish.jpg" onerror="this.onerror=null;this.src='/blog/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">这是我的博客/This is my blog</div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BD%9C%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3-%E9%81%BF%E5%9D%91%E5%BF%83%E5%BE%97%EF%BC%88%E9%99%84%E4%BB%A3%E7%A0%81-%E6%88%AA%E5%9B%BE%E6%8C%87%E5%BC%95%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">从零搭建个人博客｜过程详解+避坑心得（附代码+截图指引）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%90%AD%E5%BB%BA%E5%89%8D%E5%87%86%E5%A4%87%EF%BC%9A%E6%98%8E%E7%A1%AE%E7%9B%AE%E6%A0%87-%E5%BF%85%E5%A4%87%E5%B7%A5%E5%85%B7"><span class="toc-number">1.1.</span> <span class="toc-text">一、搭建前准备：明确目标+必备工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%85%E5%A4%87%E7%8E%AF%E5%A2%83%EF%BC%88%E6%8F%90%E5%89%8D%E5%AE%89%E8%A3%85%EF%BC%8C%E7%BC%BA%E4%B8%80%E4%B8%8D%E5%8F%AF%EF%BC%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">必备环境（提前安装，缺一不可）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A0%B8%E5%BF%83%E6%AD%A5%E9%AA%A4%EF%BC%9A%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAHexo%E5%8D%9A%E5%AE%A2%EF%BC%88%E5%85%A8%E7%A8%8B%E5%AE%9E%E6%93%8D%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">二、核心步骤：从零搭建Hexo博客（全程实操）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A41%EF%BC%9A%E5%AE%89%E8%A3%85Hexo%E6%A1%86%E6%9E%B6%EF%BC%88%E7%BB%88%E7%AB%AF%E6%93%8D%E4%BD%9C%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">步骤1：安装Hexo框架（终端操作）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A42%EF%BC%9A%E5%88%9D%E5%A7%8B%E5%8C%96Hexo%E5%8D%9A%E5%AE%A2%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text">步骤2：初始化Hexo博客项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A43%EF%BC%9A%E9%85%8D%E7%BD%AE%E5%8D%9A%E5%AE%A2%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%EF%BC%88%E5%85%B3%E9%94%AE%E4%B8%80%E6%AD%A5%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">步骤3：配置博客基础信息（关键一步）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A44%EF%BC%9A%E6%9B%B4%E6%8D%A2%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%EF%BC%88%E6%8F%90%E5%8D%87%E9%A2%9C%E5%80%BC%EF%BC%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">步骤4：更换博客主题（提升颜值）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A45%EF%BC%9A%E9%83%A8%E7%BD%B2%E5%8D%9A%E5%AE%A2%E5%88%B0GitHub-Pages%EF%BC%88%E8%AE%A9%E5%88%AB%E4%BA%BA%E8%83%BD%E8%AE%BF%E9%97%AE%EF%BC%89"><span class="toc-number">1.2.5.</span> <span class="toc-text">步骤5：部署博客到GitHub Pages（让别人能访问）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE%E8%A1%A5%E5%85%85%EF%BC%88%E6%8F%90%E5%8D%87%E5%8D%9A%E5%AE%A2%E5%AE%9E%E7%94%A8%E6%80%A7%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">三、常用配置补充（提升博客实用性）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%B0%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%EF%BC%88%E6%A0%B8%E5%BF%83%E6%93%8D%E4%BD%9C%EF%BC%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">1. 新建博客文章（核心操作）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Next%E4%B8%BB%E9%A2%98%E7%AE%80%E5%8D%95%E7%BE%8E%E5%8C%96"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. Next主题简单美化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%EF%BC%88%E9%81%BF%E5%85%8D%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%EF%BC%89"><span class="toc-number">1.3.3.</span> <span class="toc-text">3. 配置图片显示（避免图片无法加载）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%90%AD%E5%BB%BA%E5%BF%83%E5%BE%97-%E9%81%BF%E5%9D%91%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.</span> <span class="toc-text">四、搭建心得+避坑总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BF%83%E5%BE%97%E6%84%9F%E6%82%9F"><span class="toc-number">1.4.1.</span> <span class="toc-text">1. 心得感悟</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E8%A7%81%E5%9D%91%E5%8F%8A%E9%81%BF%E5%9D%91%E6%8A%80%E5%B7%A7"><span class="toc-number">1.4.2.</span> <span class="toc-text">2. 常见坑及避坑技巧</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.</span> <span class="toc-text">五、总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/blog/2026/03/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99-Hexo-Github-pages/" title="个人博客部署-静态网站(Hexo+Github pages)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s41.ax1x.com/2026/03/14/peE8XMd.png" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="个人博客部署-静态网站(Hexo+Github pages)"/></a><div class="content"><a class="title" href="/blog/2026/03/13/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2-%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99-Hexo-Github-pages/" title="个人博客部署-静态网站(Hexo+Github pages)">个人博客部署-静态网站(Hexo+Github pages)</a><time datetime="2026-03-13T14:00:12.000Z" title="Created 2026-03-13 22:00:12">2026-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/blog/2026/03/12/hello-world/" title="Test-文章标题（必填）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s41.ax1x.com/2026/03/14/peEGpIf.jpg" onerror="this.onerror=null;this.src='/blog/img/404.jpg'" alt="Test-文章标题（必填）"/></a><div class="content"><a class="title" href="/blog/2026/03/12/hello-world/" title="Test-文章标题（必填）">Test-文章标题（必填）</a><time datetime="2026-03-12T04:00:00.000Z" title="Created 2026-03-12 12:00:00">2026-03-12</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2026 By <a class="footer-bar-link" href="/blog/" title="Anthon Lei" target="_blank">Anthon Lei</a></div></div><div id="footer-type-tips"></div><div class="js-pjax"><script>function subtitleType () {
+  getScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js').then(() => {
+    jinrishici.load(result =>{
+      if (true) {
+        const sub = []
+        const content = result.data.content
+        sub.unshift(content)
+        window.typed = new Typed('#footer-type-tips', {
+          strings: sub,
+          startDelay: 300,
+          typeSpeed: 100,
+          loop: true,
+          backSpeed: 70,
+        })
+      } else {
+        document.getElementById('footer-type-tips').innerHTML = result.data.content
+      }
+    })
+  })
+}
+
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.cbd.int/typed.js@2.1.0/dist/typed.umd.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}
+</script></div></div><div class="footer-bar-right"><a class="footer-bar-link" href="/blog/null"></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/blog/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">2</div></a><a href="/blog/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/blog/categories/" title="category"><div class="headline">Categories</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">我的日常</div><div class="back-menu-list"><a class="back-menu-item" href="/blog/" title="日记"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="日记"/><span class="back-menu-item-text">日记</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/blog/tags/Github-pages/" style="font-size: 0.88rem; color: rgb(140, 41, 26);">Github pages<sup>1</sup></a><a href="/blog/tags/Hexo/" style="font-size: 0.88rem; color: rgb(50, 138, 124);">Hexo<sup>1</sup></a><a href="/blog/tags/test/" style="font-size: 0.88rem; color: rgb(153, 27, 191);">test<sup>1</sup></a><a href="/blog/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 0.88rem; color: rgb(155, 88, 187);">前端<sup>1</sup></a><a href="/blog/tags/%E6%B5%8B%E8%AF%95/" style="font-size: 0.88rem; color: rgb(147, 196, 172);">测试<sup>2</sup></a><a href="/blog/tags/%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/" style="font-size: 0.88rem; color: rgb(8, 200, 113);">静态网站<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Setting"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="Scroll To Comments"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><a id="switch-commentBarrage" href="javascript:anzhiyu.switchCommentBarrage();" title="开关弹幕"><i class="anzhiyufont anzhiyu-icon-danmu"></i></a><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/blog/js/utils.js"></script><script src="/blog/js/main.js"></script><script src="/blog/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@6.1.6/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2026 By 安知鱼 V1.7.1",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Anthon Lei 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.cbd.int/mermaid@11.12.2/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  anzhiyu.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  let initFn = window.walineFn || null
+
+  const initWaline = (Fn) => {
+    const waline = Fn(Object.assign({
+      el: '#waline-wrap',
+      serverURL: 'waline-q827r21gn-anthon985s-projects.vercel.app',
+      pageview: true,
+      dark: 'html[data-theme="dark"]',
+      path: window.location.pathname,
+      comment: false,
+      imageUploader: true,
+    }, null))
+
+    const destroyWaline = () => {
+      waline.destroy()
+    }
+
+    anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+  }
+
+  const loadWaline = async () => {
+    if (initFn) initWaline(initFn)
+    else {
+      await getCSS('https://cdn.cbd.int/@waline/client@3.8.0/dist/waline.css')
+      if (true) await getCSS('https://cdn.cbd.int/@waline/client@3.8.0/dist/waline-meta.css')
+      const { init } = await import('https://cdn.cbd.int/@waline/client@3.8.0/dist/waline.js')
+      initFn = init || Waline.init
+      initWaline(initFn)
+      window.walineFn = initFn
+    }
+  }
+
+  if ('Waline' === 'Waline' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
+    else setTimeout(loadWaline, 0)
+  } else {
+    window.loadOtherComment = loadWaline
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = content => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('waline-q827r21gn-anthon985s-projects.vercel.app/api/comment?type=recent&count=6', { method: 'GET' })
+      const result = await res.json()
+      const walineArray = result.data.map(e => {
+        return {
+          'content': changeContent(e.comment),
+          'avatar': e.avatar,
+          'nick': e.nick,
+          'url': e.url + '#' + e.objectId,
+          'date': e.time || e.insertedAt
+        }
+      })
+      saveToLocal.set('waline-newest-comments', JSON.stringify(walineArray), 10/(60*24))
+      generateHtml(walineArray)
+    } catch (err) {
+      console.error(err)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.textContent= "Unable to get the data, please make sure the settings are correct."
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('waline-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://cdn.cbd.int/qrcodejs@1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-show-text" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-show-text.min.js" data-mobile="false" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="true" async="async"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/blog/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
